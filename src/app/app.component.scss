@@ -4,6 +4,12 @@
     height: 100%;
 }
 
+.active {
+  background: #78A960;
+
+}
+
+
 .container .header {
     width: 100%;
     padding: 0 15px;
@@ -47,7 +53,7 @@ nav ul li a:hover {
     background: #ff5733;
 }
 
-.container .content { 
+.container .content {
     flex: 5 0 0;
     padding: 10px 20px;
 }

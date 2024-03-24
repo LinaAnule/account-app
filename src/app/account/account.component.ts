@@ -1,5 +1,6 @@
-import { Component} from '@angular/core';
-import { BalanceComponent } from '../balance/balance.component';
+import {Component} from '@angular/core';
+import {BalanceComponent} from '../balance/balance.component';
+import {ActivatedRoute, mapToCanActivate} from "@angular/router";
 
 interface Account {
   name: string;
@@ -18,16 +19,33 @@ export class AccountComponent {
     name: 'Savings account',
     balance: 100
   },
-  {
-    name: 'Checking account',
-    balance: 200
-  }]
-  accountsToShow: Account[] = this.accounts
+    {
+      name: 'Checking account',
+      balance: 200
+    }]
+  accountsToShow: Account[] = this.accounts;
+
+
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe((data) => {
+      const id = parseInt(data.get('id') || '');
+      const accountIndex = id - 1;
+      this.accountsToShow = [this.accounts[accountIndex]]
+      // if (id === null){
+      //  this.accountsToShow = this.accounts;
+      // }
+    });
+  }
 
   withdraw(account: Account, amount: number) {
     account.balance -= amount;
   }
+
   deposit(account: Account, amount: number) {
     account.balance += amount;
   }
+search(name: string) {
+  this.accountsToShow = this.accounts.filter(account => account.name.includes(name));
+}
+
 }
