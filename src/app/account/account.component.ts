@@ -31,9 +31,6 @@ export class AccountComponent {
       const id = parseInt(data.get('id') || '');
       const accountIndex = id - 1;
       this.accountsToShow = [this.accounts[accountIndex]]
-      // if (id === null){
-      //  this.accountsToShow = this.accounts;
-      // }
     });
   }
 
