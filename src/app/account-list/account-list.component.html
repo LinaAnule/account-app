@@ -1,0 +1,9 @@
+@for(account of accountsToShow; track account.name){
+
+  <a [routerLink]="['/account', account.id]" >
+    <img [src]="account.imgUrl" width="100"/>
+    <p>{{account.name}}</p>
+  </a>
+  <br/>
+
+}
