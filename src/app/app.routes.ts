@@ -6,6 +6,9 @@ import {FAQComponent} from "./faq/faq.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
 import {filterAccessToAccountGuard} from "./guards/filter-access-to-account.guard";
 import {AccountListComponent} from "./account-list/account-list.component";
+import {AuthComponent} from "./auth/auth.component";
+import {LoginComponent} from "./auth/login/login.component";
+import {RegisterComponent} from "./auth/register/register.component";
 
 export const routes: Routes = [
   {
@@ -15,6 +18,20 @@ export const routes: Routes = [
   {
     path: 'contacts',
     component: ContactsComponent
+  },
+  {
+    path: 'auth',
+    component: AuthComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      },
+    ],
   },
   {
     path: 'faq',
